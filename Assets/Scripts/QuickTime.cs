@@ -2,35 +2,8 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
 // manager for the quick time events
-
-
-
-
-
-public class KeySingle
-{
-    //    public string name = "up"; // up, down, left, right
-    public int numb;
-    public int status;
-
-    // TODO; do config stuff later
-    private const int keyUp = 0;
-    private const int keyDown = 1;
-    private const int keyLeft = 2;
-    private const int keyRight = 3;
-
-    private const int statusWaiting = 0;
-    private const int statusIncorrect = 1;
-    private const int statusCorrect = 2;
-
-    public KeySingle(int anumb) 
-    {
-        numb = anumb;
-        status = statusWaiting;
-    }
-    
-}
 
 
 
@@ -58,7 +31,7 @@ public class QuickTime : MonoBehaviour
     protected const int SUCCESS = 1;
     protected const int FAIL = 2;
 
-    public List<KeySingle> keyQueue = new List<KeySingle> {};
+    public List<int> keyQueue = new List<int> {};
 
 
     public void Start()
@@ -82,16 +55,21 @@ public class QuickTime : MonoBehaviour
         timeEnd = timeStart + timeMax;
         timeLeft = timeEnd - Time.time;
 
+        Debug.Log("startQuickTime called with numbKeys " + numbKeys);
+
         // Create keys
         for (uint i = 0; i < numbKeys; i++)
         {
-            keyQueue.Add(
-                new KeySingle(UnityEngine.Random.Range(0,3))
-                );
+            keyQueue.Add(Random.Range(0,3));
         }
 
-        Console.WriteLine("startQuickTime called with numbKeys " + numbKeys);
-        Console.WriteLine(keyQueue);
+
+        // Log the keys
+        foreach (int i in keyQueue)
+        {
+            Debug.Log(i);
+        }
+
 
         // Create the visyal assets and arrange them
         // TODO

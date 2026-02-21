@@ -13,13 +13,18 @@ public class GameManager : MonoBehaviour
     [Header("Main Menu")]
     public GameObject menuPanel;
 
+    public QuickTime qt;
 
+    private bool tWasPressed = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        qt.Start();
+
         if (gameCoverPanel != null)
         StartCoroutine(FlashImage(gameCoverPanel));
+
     }
 
     // Update is called once per frame
@@ -71,6 +76,14 @@ public class GameManager : MonoBehaviour
         {
             DoExitGame();
         }
+        else if (Keyboard.current.tKey.isPressed && tWasPressed != true) // TODO: for testing quicktime, delete before release.
+        {
+            qt.endQuickTime();
+            Debug.Log("T was pressed! clearing old quicktime and making new one...");
+            qt.startQuickTime(3);
+        }
+
+        tWasPressed = Keyboard.current.tKey.isPressed;
     }
 
     public void DoExitGame()
