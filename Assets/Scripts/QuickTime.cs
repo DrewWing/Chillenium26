@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class QuickTime : MonoBehaviour
 {
