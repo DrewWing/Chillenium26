@@ -12,9 +12,11 @@ public class QuickTime : MonoBehaviour
     public Sprite[] idleSprites;
     public Sprite[] flashSprites;
 
+
     private List<Directions> activeDirections = new List<Directions>();
     public int quickTimeScore = 0;
 
+    [SerializeField] SoundManager soundManager;
     [SerializeField] BossFight bossFight;
     [SerializeField] Level1Manager level1Manager;
 
@@ -60,7 +62,13 @@ public class QuickTime : MonoBehaviour
             int index = (int)pressed - 1;
             arrowImages[index].sprite = idleSprites[index];
 
+            soundManager.playClick();
             Debug.Log($"Correct! Score: {quickTimeScore}");
+        } else
+        {
+            Debug.Log($"Incorreect! key {pressed}");
+            //activeDirections.ForEach(Debug.Log);
+            soundManager.playDoubleClick();
         }
     }
 

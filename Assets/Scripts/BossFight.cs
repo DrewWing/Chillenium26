@@ -11,6 +11,7 @@ public class BossFight : MonoBehaviour
     public SpriteSwitcher playerSwitcher;
     public SpriteSwitcher enemySwitcher;
 
+    [SerializeField] private SoundManager soundManager;
     [SerializeField] public Level1Manager level1Manager;
 
     public Image playerImage;
@@ -48,6 +49,7 @@ public class BossFight : MonoBehaviour
         {
             if (level1Manager.quickTimeEventWin)
             {
+                soundManager.playAttack();
                 enemy.health = Math.Max(0, enemy.health - healthChanger);
                 playerSwitcher.SetState(SpriteSwitcher.CharacterState.Attack);
                 enemySwitcher.SetState(SpriteSwitcher.CharacterState.Hit);
@@ -55,6 +57,7 @@ public class BossFight : MonoBehaviour
             }
             else
             {
+                soundManager.playHit();
                 player.health = Math.Max(0, player.health - baseAmount);
                 playerSwitcher.SetState(SpriteSwitcher.CharacterState.Hit);
                 enemySwitcher.SetState(SpriteSwitcher.CharacterState.Attack);
@@ -65,12 +68,14 @@ public class BossFight : MonoBehaviour
         {
             if (level1Manager.quickTimeEventWin)
             {
+                soundManager.playAttack();
                 player.health = Math.Min(player.maxHealth, player.health + healthChanger);
                 playerSwitcher.SetState(SpriteSwitcher.CharacterState.Victory);
                 enemySwitcher.SetState(SpriteSwitcher.CharacterState.Idle);
             }
             else
             {
+                soundManager.playHit();
                 enemy.health = Math.Min(enemy.maxHealth, enemy.health + baseAmount);
                 playerSwitcher.SetState(SpriteSwitcher.CharacterState.Idle);
                 enemySwitcher.SetState(SpriteSwitcher.CharacterState.Victory);
@@ -102,11 +107,13 @@ public class BossFight : MonoBehaviour
         {
             playerSwitcher.SetState(SpriteSwitcher.CharacterState.Death);
             Debug.Log("Enemy wins...");
+            soundManager.playLoss();
         }
         else if (enemy.health <= 0)
         {
             enemySwitcher.SetState(SpriteSwitcher.CharacterState.Death);
             Debug.Log("You WINNNN");
+            soundManager.playVictory();
         }
     }
 }

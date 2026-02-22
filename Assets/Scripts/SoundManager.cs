@@ -26,15 +26,15 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void playDoubClick()
+    public void playDoubleClick()
     {
         if (audioSource && clickDoubleSound) { audioSource.PlayOneShot(clickDoubleSound); }
     }
 
     public void playVictory() { if (audioSource && victorySound) { audioSource.PlayOneShot(victorySound); }  }
     public void playLoss() { if (audioSource && lossSound) { audioSource.PlayOneShot(lossSound); } }
-    public void playattack() { if (audioSource && attackSound) { audioSource.PlayOneShot(attackSound); } }
-    public void playhit() { if (audioSource && hitSound) { audioSource.PlayOneShot(hitSound); } }
+    public void playAttack() { if (audioSource && attackSound) { audioSource.PlayOneShot(attackSound); } }
+    public void playHit() { if (audioSource && hitSound) { audioSource.PlayOneShot(hitSound); } }
 
 
 }
