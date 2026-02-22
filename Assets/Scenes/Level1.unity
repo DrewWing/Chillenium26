@@ -2328,9 +2328,9 @@ MonoBehaviour:
   enemyHealthBar: {fileID: 1416648620}
   backgroundImage: {fileID: 468539183}
   backgroundsList:
-  - {fileID: 21300000, guid: 1899d1724fc6f6d4c8738fcf073e067f, type: 3}
-  - {fileID: 21300000, guid: ea7d8726a2224a241b3845e2445070d5, type: 3}
-  - {fileID: 21300000, guid: 321b93e19a450f0458745c51de8c53bd, type: 3}
+  - {fileID: 21300000, guid: 6177752318dd5aa4f8472c6130dd1820, type: 3}
+  - {fileID: 21300000, guid: 9936de9410ceb2a41aa7e35db806d2c3, type: 3}
+  - {fileID: 21300000, guid: eac4ac4af1fe4824db48acd47dece2c0, type: 3}
   - {fileID: 21300000, guid: 8bf3d895c0c17a144bd818eed5c97e1d, type: 3}
   - {fileID: 21300000, guid: a184503ca2d85b846a546ec7b573928c, type: 3}
   playButton: {fileID: 887591704}
