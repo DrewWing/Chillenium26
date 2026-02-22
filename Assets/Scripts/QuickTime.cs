@@ -33,6 +33,8 @@ public class QuickTime : MonoBehaviour
 
     public List<int> keyQueue = new List<int> {};
 
+    [SerializeField] TimerDisplay timerDisplay;
+
 
     public void Start()
     {
@@ -47,8 +49,18 @@ public class QuickTime : MonoBehaviour
 
     }
 
-    public void startQuickTime(int numbKeys)
+    public void startQuickTime()
     {
+        timerDisplay.timerIsRunning = true;
+
+        while(timerDisplay.timerIsRunning)
+        {
+            
+        }
+
+
+        
+        int numbKeys = 5;
         // creates a quick time event using a number of randomly selected keys.
         // starts timer.
         timeStart = Time.time;

@@ -3,48 +3,89 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
-public class GameManager : MonoBehaviour
+public class Level1Manager : MonoBehaviour
 {
-    [Header("Cover")]
-    public float flashImageDuration = 3.0f;
-
-    public GameObject gameCoverPanel;
-
-    [Header("Main Menu")]
-    public GameObject menuPanel;
 
     [Header("Audio")]
     public AudioSource audioSource;
-    public AudioClip clickSound;
+    public AudioClip hitSound;
+    public AudioClip lossSound;
+    public AudioClip victorySound;
+
+    public GameObject choicePanel;
+
+    public GameObject bettingPanel;
 
     public QuickTime qt;
 
+    public int bettedHealthPoints = 0;
+
+    public enum ActionState {Idle, Decision, Attack, Heal};
+
+    public ActionState currentActionState = ActionState.Idle;
+
     private bool tWasPressed = false;
+
+    [SerializeField] QuickTime quickTime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         qt.Start();
 
-        if (gameCoverPanel != null)
-        StartCoroutine(FlashImage(gameCoverPanel));
-        // if (audioSource && clickSound)
+        Player player = new();
+        player.Initialize(5);
+
+        Enemy enemy = new();
+        player.Initialize(5);
+        // if (audioSource && hitSound)
         // {
-        //     audioSource.PlayOneShot(clickSound);
+        //     audioSource.PlayOneShot(hitSound);
         // }
     }
 
-    // Update is called once per frame
     void Update()
     {
+        GamePlay();
         KeyManager();
     }
 
-    IEnumerator FlashImage(GameObject targetImage)
+    void GamePlay()
     {
-        targetImage.SetActive(true);
-        yield return new WaitForSeconds(flashImageDuration);
-        targetImage.SetActive(false);
+        switch(currentActionState)
+        {
+            case ActionState.Idle:
+                choicePanel.SetActive(true);
+                break;
+            case ActionState.Decision:
+                bettingPanel.SetActive(true);
+                break;
+            case ActionState.Attack:
+            case ActionState.Heal:
+                quickTime.startQuickTime();
+                break;
+            default:
+                break;     
+
+        }
+    }
+
+    public void SetAttackState()
+    {
+        currentActionState = ActionState.Attack;
+        choicePanel.SetActive(false);
+    }
+
+    public void SetHealState()
+    {
+        currentActionState = ActionState.Heal;
+        choicePanel.SetActive(false);
+    }
+
+    public void SetBettedHealthPoints(int points)
+    {
+        bettedHealthPoints = points;
+        bettingPanel.SetActive(false);
     }
 
     public void LoadSceneByName(string sceneName)

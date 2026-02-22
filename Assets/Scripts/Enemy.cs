@@ -24,5 +24,9 @@ public class Enemy : MonoBehaviour
     bool isDead() { return health <= 0; }
     bool isAlive() { return health > 0; }
 
+    public void Initialize(int health)
+    {
+        this.health = health;
+    }
 
 }
