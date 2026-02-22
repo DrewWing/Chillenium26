@@ -9,23 +9,23 @@ public class QuickTime : MonoBehaviour
     public enum Directions { None, Up, Down, Left, Right };
 
     public Image[] arrowImages;
-    public Sprite[] idleSprites; 
+    public Sprite[] idleSprites;
     public Sprite[] flashSprites;
 
     private List<Directions> activeDirections = new List<Directions>();
     public int quickTimeScore = 0;
 
-	[SerializeField] BossFight bossFight;
+    [SerializeField] BossFight bossFight;
+    [SerializeField] Level1Manager level1Manager;
 
-	[SerializeField] Level1Manager level1Manager;
+    void Start()
+    {
+        foreach (Image img in arrowImages)
+        {
+            img.gameObject.SetActive(false);
+        }
+    }
 
-	void Start()
-	{
-		foreach(Image img in arrowImages)
-		{
-			img.gameObject.SetActive(false);
-		}
-	}
     void Update()
     {
         KeyManager();
@@ -33,13 +33,13 @@ public class QuickTime : MonoBehaviour
 
     public void StartQuickTime()
     {
-		quickTimeScore = 0;
-		level1Manager.bettingPanel.SetActive(false);
-		foreach(Image img in arrowImages)
-		{
-			img.gameObject.SetActive(true);
-		}
-        StartCoroutine(FlashRoutine(30f));
+        quickTimeScore = 0;
+        level1Manager.bettingPanel.SetActive(false);
+        foreach (Image img in arrowImages)
+        {
+            img.gameObject.SetActive(true);
+        }
+        StartCoroutine(FlashRoutine(10f));
     }
 
     private void KeyManager()
@@ -56,16 +56,21 @@ public class QuickTime : MonoBehaviour
         {
             quickTimeScore++;
             activeDirections.Remove(pressed);
-            
+
             int index = (int)pressed - 1;
             arrowImages[index].sprite = idleSprites[index];
-            
+
             Debug.Log($"Correct! Score: {quickTimeScore}");
         }
     }
 
     IEnumerator FlashRoutine(float totalTime)
     {
+        float speedMultiplier = 1f - Mathf.Clamp(level1Manager.currentRound * 0.08f, 0f, 0.4f);
+        float flashOn = 0.8f * speedMultiplier;
+        float flashOff = 0.7f * speedMultiplier;
+        float cycleTime = flashOn + flashOff;
+
         float elapsed = 0;
         while (elapsed < totalTime)
         {
@@ -84,7 +89,7 @@ public class QuickTime : MonoBehaviour
                 pool.RemoveAt(randomIndex);
             }
 
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(flashOn);
 
             for (int i = 0; i < arrowImages.Length; i++)
             {
@@ -92,18 +97,37 @@ public class QuickTime : MonoBehaviour
             }
             activeDirections.Clear();
 
-            yield return new WaitForSeconds(0.7f);
-            elapsed += 1.5f;
+            yield return new WaitForSeconds(flashOff);
+            elapsed += cycleTime;
         }
+
         Debug.Log("Game Finished! Final Score: " + quickTimeScore);
-		foreach(Image img in arrowImages)
-		{
-			img.gameObject.SetActive(false);
-		}
-		if (quickTimeScore > 10)
-		{
-			level1Manager.quickTimeEventWin = true;
-		}
-		bossFight.PlayerSideFight();
+
+        foreach (Image img in arrowImages)
+        {
+            img.gameObject.SetActive(false);
+        }
+
+        int maxPossibleHits = Mathf.RoundToInt(totalTime / cycleTime) * 2;
+        float ratio = maxPossibleHits > 0 ? (float)quickTimeScore / maxPossibleHits : 0f;
+
+        if (ratio >= 0.7f)
+        {
+            level1Manager.quickTimeTier = 2;
+            level1Manager.quickTimeEventWin = true;
+        }
+        else if (ratio >= 0.35f)
+        {
+            level1Manager.quickTimeTier = 1;
+            level1Manager.quickTimeEventWin = true;
+        }
+        else
+        {
+            level1Manager.quickTimeTier = 0;
+            level1Manager.quickTimeEventWin = false;
+        }
+
+        level1Manager.currentRound++;
+        bossFight.PlayerSideFight();
     }
 }
