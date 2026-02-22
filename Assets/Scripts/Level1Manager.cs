@@ -6,7 +6,6 @@ using TMPro;
 
 public class Level1Manager : MonoBehaviour
 {
-
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip hitSound;
@@ -21,11 +20,11 @@ public class Level1Manager : MonoBehaviour
 
     public TextMeshProUGUI displayBettedHealthPoints;
 
-    public enum ActionState {Idle, Decision, Attack, Heal};
+    public enum ActionState {Idle, Attack, Heal};
+
+    public bool quickTimeEventWin = false;
 
     public ActionState currentActionState = ActionState.Idle;
-
-    private bool tWasPressed = false;
 
     [SerializeField] private QuickTime quickTime;
     [SerializeField] public Player player;
@@ -105,7 +104,7 @@ public class Level1Manager : MonoBehaviour
     public void LoadSceneByName(string sceneName)
     {
         Debug.Log(sceneName + " loaded");
-        // SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName);
     }
 
     private void KeyManager()

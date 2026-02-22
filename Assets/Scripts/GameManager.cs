@@ -17,15 +17,11 @@ public class GameManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip clickSound;
 
-    public QuickTime qt;
-
     private bool tWasPressed = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        qt.Start();
-
         if (gameCoverPanel != null)
         StartCoroutine(FlashImage(gameCoverPanel));
         // if (audioSource && clickSound)
