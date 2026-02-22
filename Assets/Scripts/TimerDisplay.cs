@@ -2,11 +2,11 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 
-public class CountdownTimer : MonoBehaviour
+public class TimerDisplay : MonoBehaviour
 {
     public TextMeshProUGUI timerText; 
     public float timeRemaining = 30f;
-    [SerializeField] private bool timerIsRunning = false;
+    [SerializeField] public bool timerIsRunning = false;
 
     void Update()
     {

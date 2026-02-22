@@ -171,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CountdownTimer
   timerText: {fileID: 84900337}
   timeRemaining: 20
+  timerIsRunning: 0
 --- !u!114 &84900337
 MonoBehaviour:
   m_ObjectHideFlags: 0
