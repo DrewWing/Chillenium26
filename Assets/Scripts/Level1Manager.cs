@@ -15,6 +15,9 @@ public class Level1Manager : MonoBehaviour
 
     public TextMeshProUGUI displayBettedHealthPoints;
 
+    public TextMeshProUGUI playerHealth;
+    public TextMeshProUGUI enemyHealth;
+
     public enum ActionState { Idle, Attack, Heal };
 
     public bool quickTimeEventWin = false;
@@ -47,6 +50,8 @@ public class Level1Manager : MonoBehaviour
         GamePlay();
         KeyManager();
         displayBettedHealthPoints.text = bettedHealthPoints.ToString();
+        playerHealth.text = player.health.ToString();
+        enemyHealth.text = enemy.health.ToString();
     }
 
     void GamePlay()
