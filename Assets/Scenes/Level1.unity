@@ -1359,8 +1359,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpriteSwitcher
   characterStateList:
-  - {fileID: 21300000, guid: 5005152e6f2449e4084f3384c1c9033a, type: 3}
-  - {fileID: 21300000, guid: a14766fe173590342a9884852699164b, type: 3}
+  - {fileID: 21300000, guid: 8e6505b17b3617949acf5f737a326f16, type: 3}
+  - {fileID: 21300000, guid: d3b556de46cb28a4fb6499af95f5f589, type: 3}
   - {fileID: 21300000, guid: 94d9e6a49f93e514bb07b23157259e68, type: 3}
   - {fileID: 21300000, guid: be800da1dffcbe144a390b626aa0c147, type: 3}
   - {fileID: 21300000, guid: 6cafa414da1d56d49bf369299e82cb07, type: 3}
@@ -1368,7 +1368,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ee892684fc13ee947a808ea6a0f34fe5, type: 3}
   - {fileID: 21300000, guid: 0a9ee2bb0187c154f9d9858b3d0caa16, type: 3}
   - {fileID: 21300000, guid: dfc43690952572140936c5a3d1229299, type: 3}
-  currentState: 1
+  currentState: 0
   interval: 0.3
 --- !u!1 &1277519211
 GameObject:
