@@ -1249,6 +1249,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1217092001}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: playClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1217092000}
         m_TargetAssemblyTypeName: BossFight, Assembly-CSharp
         m_MethodName: NextRound
@@ -1680,6 +1692,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1217092001}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: playClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1217091994}
         m_TargetAssemblyTypeName: Level1Manager, Assembly-CSharp
         m_MethodName: IncreaseBettedHealthPoints
@@ -1821,6 +1845,7 @@ GameObject:
   - component: {fileID: 1217091999}
   - component: {fileID: 1217091998}
   - component: {fileID: 1217092000}
+  - component: {fileID: 1217092001}
   m_Layer: 0
   m_Name: Level1Manager
   m_TagString: Untagged
@@ -2062,6 +2087,25 @@ MonoBehaviour:
   playerImage: {fileID: 1236346688}
   enemyImage: {fileID: 1795550430}
   nextRoundButton: {fileID: 425402732}
+--- !u!114 &1217092001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217091992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe5d4b396ae53f54e8a3cc86800ce023, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  audioSource: {fileID: 1979542258}
+  clickSound: {fileID: 8300000, guid: 919c4fa2b9a8a91469608bcf2d03afbc, type: 3}
+  clickDoubleSound: {fileID: 8300000, guid: 9139418901b08854a9aeb331958cbd3d, type: 3}
+  attackSound: {fileID: 8300000, guid: 540fad42da008ac4d8baf84ac7d9bfcd, type: 3}
+  hitSound: {fileID: 8300000, guid: 6c52100605449f046a8fc71bccf5d7bf, type: 3}
+  victorySound: {fileID: 8300000, guid: 595803f938cf5ee46b78385e1575f8d0, type: 3}
+  lossSound: {fileID: 8300000, guid: e7882060446231749b7e9648c7298ae2, type: 3}
 --- !u!1 &1236346686
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,8 +2300,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1217091994}
-        m_TargetAssemblyTypeName: Level1Manager, Assembly-CSharp
+      - m_Target: {fileID: 1217092001}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: playClick
         m_Mode: 1
         m_Arguments:
@@ -2400,8 +2444,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1217091994}
-        m_TargetAssemblyTypeName: Level1Manager, Assembly-CSharp
+      - m_Target: {fileID: 1217092001}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: playClick
         m_Mode: 1
         m_Arguments:
@@ -2889,6 +2933,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1217092001}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: playClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1217091994}
         m_TargetAssemblyTypeName: Level1Manager, Assembly-CSharp
         m_MethodName: DecreaseBettedHealthPoints
@@ -3021,6 +3077,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1217092001}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: playClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1217091994}
         m_TargetAssemblyTypeName: Level1Manager, Assembly-CSharp
         m_MethodName: BetAllPoints
@@ -3835,6 +3903,7 @@ GameObject:
   - component: {fileID: 1979542257}
   - component: {fileID: 1979542256}
   - component: {fileID: 1979542255}
+  - component: {fileID: 1979542258}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -3903,6 +3972,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1979542258
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979542254}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.6
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 120
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2028667808
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,11 +6,6 @@ using TMPro;
 
 public class Level1Manager : MonoBehaviour
 {
-    [Header("Audio")]
-    public AudioSource audioSource;
-    public AudioClip hitSound;
-    public AudioClip lossSound;
-    public AudioClip victorySound;
 
     public GameObject choicePanel;
     public GameObject bettingPanel;
@@ -29,6 +24,8 @@ public class Level1Manager : MonoBehaviour
 
     public HealthBar playerHealthBar;
     public HealthBar enemyHealthBar;
+    
+    [SerializeField] private SoundManager soundManager;
 
     [SerializeField] private QuickTime quickTime;
     [SerializeField] public Player player;

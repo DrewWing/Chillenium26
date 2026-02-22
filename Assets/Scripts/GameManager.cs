@@ -13,9 +13,6 @@ public class GameManager : MonoBehaviour
     [Header("Main Menu")]
     public GameObject menuPanel;
 
-    [Header("Audio")]
-    public AudioSource audioSource;
-    public AudioClip clickSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,10 +36,6 @@ public class GameManager : MonoBehaviour
 
     public void LoadSceneByName(string sceneName)
     {
-        if (audioSource && clickSound)
-        {
-            audioSource.PlayOneShot(clickSound);
-        }
         Debug.Log(sceneName + " loaded");
         // SceneManager.LoadScene(sceneName);
     }
@@ -82,10 +75,6 @@ public class GameManager : MonoBehaviour
 
     public void DoExitGame()
     {
-        if (audioSource && clickSound)
-        {
-            audioSource.PlayOneShot(clickSound);
-        }
         Application.Quit();
     }
 }
