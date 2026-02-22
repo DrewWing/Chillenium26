@@ -652,6 +652,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 468539182}
+  - {fileID: 1006363468}
+  - {fileID: 896841732}
+  - {fileID: 396626545}
+  - {fileID: 390870331}
   - {fileID: 942176907}
   - {fileID: 1293113233}
   - {fileID: 1236346687}
@@ -660,10 +664,6 @@ RectTransform:
   - {fileID: 84900335}
   - {fileID: 1477668816}
   - {fileID: 1608404348}
-  - {fileID: 1006363468}
-  - {fileID: 896841732}
-  - {fileID: 396626545}
-  - {fileID: 390870331}
   - {fileID: 206266045}
   - {fileID: 1416648617}
   m_Father: {fileID: 0}
