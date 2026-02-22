@@ -1188,7 +1188,7 @@ MonoBehaviour:
   gameCoverPanel: {fileID: 0}
   menuPanel: {fileID: 0}
   audioSource: {fileID: 1826254260}
-  clickSound: {fileID: 0}
+  clickSound: {fileID: 8300000, guid: 919c4fa2b9a8a91469608bcf2d03afbc, type: 3}
 --- !u!4 &1826254259
 Transform:
   m_ObjectHideFlags: 0

@@ -17,17 +17,11 @@ public class GameManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip clickSound;
 
-    private bool tWasPressed = false;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if (gameCoverPanel != null)
         StartCoroutine(FlashImage(gameCoverPanel));
-        // if (audioSource && clickSound)
-        // {
-        //     audioSource.PlayOneShot(clickSound);
-        // }
     }
 
     // Update is called once per frame
@@ -45,6 +39,10 @@ public class GameManager : MonoBehaviour
 
     public void LoadSceneByName(string sceneName)
     {
+        if (audioSource && clickSound)
+        {
+            audioSource.PlayOneShot(clickSound);
+        }
         Debug.Log(sceneName + " loaded");
         // SceneManager.LoadScene(sceneName);
     }
@@ -79,20 +77,15 @@ public class GameManager : MonoBehaviour
         {
             DoExitGame();
         }
-        else if (Keyboard.current.tKey.isPressed)// && tWasPressed != true) // TODO: for testing quicktime, delete before release.
-        {
-            Debug.Log("T was pressed!");
-            if (audioSource && clickSound)
-            {
-                audioSource.PlayOneShot(clickSound);
-            }
-        }
 
-            tWasPressed = Keyboard.current.tKey.isPressed;
     }
 
     public void DoExitGame()
     {
+        if (audioSource && clickSound)
+        {
+            audioSource.PlayOneShot(clickSound);
+        }
         Application.Quit();
     }
 }
