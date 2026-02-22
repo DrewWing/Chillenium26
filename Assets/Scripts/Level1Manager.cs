@@ -8,9 +8,12 @@ public class Level1Manager : MonoBehaviour
 {
     [Header("Audio")]
     public AudioSource audioSource;
+    public AudioClip attackSound;
     public AudioClip hitSound;
     public AudioClip lossSound;
     public AudioClip victorySound;
+    public AudioClip clickSound;
+    public AudioClip clickDoubleSound;
 
     public GameObject choicePanel;
 
@@ -29,6 +32,7 @@ public class Level1Manager : MonoBehaviour
     [SerializeField] private QuickTime quickTime;
     [SerializeField] public Player player;
     [SerializeField] public Enemy enemy;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -72,8 +76,25 @@ public class Level1Manager : MonoBehaviour
         }
     }
 
+    public void playClick()
+    {
+        if (audioSource && clickSound)
+        {
+            audioSource.PlayOneShot(clickSound);
+        }
+    }
+
+    public void playDoubClick()
+    {
+        if (audioSource && clickDoubleSound) { audioSource.PlayOneShot(clickDoubleSound); }
+    }
+
     public void SetAttackState()
     {
+        //if (audioSource && attackSound) // happens whenever "strike" button hit???
+        //{
+        //    audioSource.PlayOneShot(attackSound);
+        //}
         currentActionState = ActionState.Attack;
         choicePanel.SetActive(false);
     }
@@ -86,18 +107,27 @@ public class Level1Manager : MonoBehaviour
 
     public void IncreaseBettedHealthPoints()
     {
-        if (bettedHealthPoints < player.health)
-            bettedHealthPoints++;
+        if (bettedHealthPoints < player.health) {
+            playClick();
+            bettedHealthPoints++; 
+        }
+        else { playDoubClick();  }
     }
 
     public void DecreaseBettedHealthPoints()
     {
-        if (bettedHealthPoints > 0)
-            bettedHealthPoints--;
+        if (bettedHealthPoints > 0) {
+        playClick();
+        bettedHealthPoints--;
+        } else
+        {
+            playDoubClick();
+        }
     }
 
     public void BetAllPoints()
     {
+        playClick();
         bettedHealthPoints = player.health;
     }
 
@@ -113,7 +143,13 @@ public class Level1Manager : MonoBehaviour
         {
             DoExitGame();
         }
+        else if (false && Keyboard.current.tKey.isPressed)
+        {
+            Debug.Log("t pressed.");
+            playClick();
+        }
     }
+
 
     public void DoExitGame()
     {

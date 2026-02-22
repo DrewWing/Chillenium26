@@ -1025,6 +1025,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1217091994}
+        m_TargetAssemblyTypeName: Level1Manager, Assembly-CSharp
+        m_MethodName: playClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &887591705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1695,9 +1707,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Level1Manager
   audioSource: {fileID: 1217091993}
+  attackSound: {fileID: 8300000, guid: bd4dc9b3b727e2044a1fa36f9cdadc22, type: 3}
   hitSound: {fileID: 0}
-  lossSound: {fileID: 0}
-  victorySound: {fileID: 0}
+  lossSound: {fileID: 8300000, guid: 6a2712aedebf9db4195ebc2fee6f4fde, type: 3}
+  victorySound: {fileID: 8300000, guid: 595803f938cf5ee46b78385e1575f8d0, type: 3}
+  clickSound: {fileID: 8300000, guid: 919c4fa2b9a8a91469608bcf2d03afbc, type: 3}
+  clickDoubleSound: {fileID: 8300000, guid: 9139418901b08854a9aeb331958cbd3d, type: 3}
   choicePanel: {fileID: 942176906}
   bettingPanel: {fileID: 1293113232}
   bettedHealthPoints: 0
@@ -2007,6 +2022,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1217091994}
+        m_TargetAssemblyTypeName: Level1Manager, Assembly-CSharp
+        m_MethodName: playClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1277519214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2131,6 +2158,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1217091994}
         m_TargetAssemblyTypeName: Level1Manager, Assembly-CSharp
         m_MethodName: SetAttackState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1217091994}
+        m_TargetAssemblyTypeName: Level1Manager, Assembly-CSharp
+        m_MethodName: playClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

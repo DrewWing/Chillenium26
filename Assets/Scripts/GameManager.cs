@@ -79,12 +79,16 @@ public class GameManager : MonoBehaviour
         {
             DoExitGame();
         }
-        else if (Keyboard.current.tKey.isPressed && tWasPressed != true) // TODO: for testing quicktime, delete before release.
+        else if (Keyboard.current.tKey.isPressed)// && tWasPressed != true) // TODO: for testing quicktime, delete before release.
         {
-            Debug.Log("T was pressed! clearing old quicktime and making new one...");
+            Debug.Log("T was pressed!");
+            if (audioSource && clickSound)
+            {
+                audioSource.PlayOneShot(clickSound);
+            }
         }
 
-        tWasPressed = Keyboard.current.tKey.isPressed;
+            tWasPressed = Keyboard.current.tKey.isPressed;
     }
 
     public void DoExitGame()
