@@ -2384,7 +2384,7 @@ MonoBehaviour:
   soundManager: {fileID: 1217092001}
   bossFight: {fileID: 1217092000}
   level1Manager: {fileID: 1217091994}
-  timerDisplay: {fileID: 0}
+  timerDisplay: {fileID: 84900336}
 --- !u!114 &1217091998
 MonoBehaviour:
   m_ObjectHideFlags: 0
