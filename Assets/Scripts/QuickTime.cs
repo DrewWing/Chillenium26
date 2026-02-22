@@ -1,29 +1,61 @@
 using UnityEngine;
-
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Random = UnityEngine.Random;
+using UnityEngine.InputSystem;
 // manager for the quick time events
 
 
-public class Enemy : MonoBehaviour
+
+public class QuickTime : MonoBehaviour
 {
-    public int timeCurrent = 5000; // in ms, time left to hit the keys
-    public int timeMax = 5000;
-    public const int timeMargin = 20; // time in margin after officially over that we still accept input (TODO: implement logic)
+    // to keep track of what's flashing
+    public enum Directions {None, Up, Down, Left, Right};
 
-    void Start()
+    [SerializeField] TimerDisplay timerDisplay;
+
+
+    public void Start()
     {
+        
     }
 
-    void keyHit(string key) // when key is hit ("up", "down", "left", "right")
+    void Update()
     {
-        // logic: check to see if key is correct
+        KeyManager();
+    }
 
-        // run other functions to do vfx, sfx, etc.
+    public void StartQuickTime()
+    {
+        Debug.Log("hahahahahahhaa");
+        
 
     }
 
-    void runfx(Player player)
+    private void KeyManager()
     {
-        // Logic goes here
+        if (Keyboard.current.upArrowKey.isPressed)
+        {
+            Debug.Log("Up was pressed!");
+        }
+        else if (Keyboard.current.downArrowKey.isPressed)
+        {
+            Debug.Log("Down was pressed!");
+        }
+        else if (Keyboard.current.leftArrowKey.isPressed)
+        {
+            Debug.Log("Left was pressed!");
+        }
+        else if (Keyboard.current.rightArrowKey.isPressed)
+        {
+            Debug.Log("Right was pressed!");
+        }
+    }
+
+    void Flash()
+    {
+        
     }
 
 }

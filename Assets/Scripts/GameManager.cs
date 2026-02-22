@@ -13,13 +13,25 @@ public class GameManager : MonoBehaviour
     [Header("Main Menu")]
     public GameObject menuPanel;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip clickSound;
 
+    public QuickTime qt;
+
+    private bool tWasPressed = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        qt.Start();
+
         if (gameCoverPanel != null)
         StartCoroutine(FlashImage(gameCoverPanel));
+        // if (audioSource && clickSound)
+        // {
+        //     audioSource.PlayOneShot(clickSound);
+        // }
     }
 
     // Update is called once per frame
@@ -71,6 +83,12 @@ public class GameManager : MonoBehaviour
         {
             DoExitGame();
         }
+        else if (Keyboard.current.tKey.isPressed && tWasPressed != true) // TODO: for testing quicktime, delete before release.
+        {
+            Debug.Log("T was pressed! clearing old quicktime and making new one...");
+        }
+
+        tWasPressed = Keyboard.current.tKey.isPressed;
     }
 
     public void DoExitGame()
