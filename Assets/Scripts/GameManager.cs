@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     public void LoadSceneByName(string sceneName)
     {
         Debug.Log(sceneName + " loaded");
-        // SceneManager.LoadScene(sceneName);
+         SceneManager.LoadScene(sceneName);
     }
 
     private void KeyManager()
