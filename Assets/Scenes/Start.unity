@@ -1188,10 +1188,7 @@ MonoBehaviour:
   gameCoverPanel: {fileID: 0}
   menuPanel: {fileID: 0}
   audioSource: {fileID: 1826254260}
-  hitSound: {fileID: 0}
-  lossSound: {fileID: 0}
-  victorySound: {fileID: 0}
-  qt: {fileID: 0}
+  clickSound: {fileID: 0}
 --- !u!4 &1826254259
 Transform:
   m_ObjectHideFlags: 0
@@ -1218,7 +1215,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 69f6124d3cb5b5c42b7b22b542e41e74, type: 3}
+  m_Resource: {fileID: 8300000, guid: e613cf81175e7f344bffb0890d435511, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
