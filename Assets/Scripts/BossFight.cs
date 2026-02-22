@@ -91,6 +91,9 @@ public class BossFight : MonoBehaviour
         level1Manager.quickTimeTier = 0;
         level1Manager.bettedHealthPoints = 0;
         level1Manager.currentActionState = Level1Manager.ActionState.Idle;
+        playerSwitcher.LoadRound(level1Manager.currentRound);
+        enemySwitcher.LoadRound(level1Manager.currentRound);
+        nextRoundButton.gameObject.SetActive(false);
     }
 
     private void CheckVictory()
