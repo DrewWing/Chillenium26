@@ -18,15 +18,29 @@ public class BossFight : MonoBehaviour
     public Image playerImage;
     public Image enemyImage;
 
+    private RectTransform playerRT;
+    private RectTransform enemyRT;
+
+    private Vector2 playerOriginalSize;
+    private Vector2 playerOriginalPos;
+    private Vector2 enemyOriginalSize;
+    private Vector2 enemyOriginalPos;
+
     public Button nextRoundButton;
 
     public TextMeshProUGUI outcomeText;
 
     void Start()
     {
-        // playerImage.gameObject.SetActive(false);
-        // enemyImage.gameObject.SetActive(false);
         nextRoundButton.gameObject.SetActive(false);
+
+        playerRT = playerImage.GetComponent<RectTransform>();
+        enemyRT = enemyImage.GetComponent<RectTransform>();
+
+        playerOriginalSize = playerRT.sizeDelta;
+        playerOriginalPos = playerRT.anchoredPosition;
+        enemyOriginalSize = enemyRT.sizeDelta;
+        enemyOriginalPos = enemyRT.anchoredPosition;
     }
 
     public void PlayerSideFight()
@@ -38,6 +52,13 @@ public class BossFight : MonoBehaviour
     {
         playerImage.gameObject.SetActive(true);
         enemyImage.gameObject.SetActive(true);
+
+        playerRT.sizeDelta = new Vector2(450f, 600f);
+        playerRT.anchoredPosition = new Vector2(-150f, -110f);
+
+        enemyRT.sizeDelta = new Vector2(450f, 600f);
+        enemyRT.anchoredPosition = new Vector2(150f, -110f);
+
         level1Manager.backgroundImage.sprite = level1Manager.backgroundsList[2];
         int baseAmount = level1Manager.bettedHealthPoints;
         int tier = level1Manager.quickTimeTier;
@@ -64,7 +85,7 @@ public class BossFight : MonoBehaviour
                 player.health = Math.Max(0, player.health - baseAmount);
                 playerSwitcher.SetState(SpriteSwitcher.CharacterState.Hit);
                 enemySwitcher.SetState(SpriteSwitcher.CharacterState.Attack);
-                outcomeText.text = "Failed QTE! Took " + baseAmount + " damage.";
+                outcomeText.text = "Failed event! Took " + baseAmount + " damage.";
             }
         }
         else if (level1Manager.currentActionState == Level1Manager.ActionState.Heal)
@@ -84,6 +105,7 @@ public class BossFight : MonoBehaviour
                 enemySwitcher.SetState(SpriteSwitcher.CharacterState.Victory);
             }
         }
+
         level1Manager.playerHealthBar.TakeDamage(player.health);
         level1Manager.enemyHealthBar.TakeDamage(enemy.health);
 
@@ -102,6 +124,12 @@ public class BossFight : MonoBehaviour
         playerSwitcher.LoadRound(level1Manager.currentRound);
         enemySwitcher.LoadRound(level1Manager.currentRound);
         nextRoundButton.gameObject.SetActive(false);
+        outcomeText.text = "";
+
+        playerRT.sizeDelta = playerOriginalSize;
+        playerRT.anchoredPosition = playerOriginalPos;
+        enemyRT.sizeDelta = enemyOriginalSize;
+        enemyRT.anchoredPosition = enemyOriginalPos;
     }
 
     private void CheckVictory()
