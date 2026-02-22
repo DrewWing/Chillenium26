@@ -1,52 +1,44 @@
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
 using System.Collections;
 
 public class SpriteSwitcher : MonoBehaviour
 {
     [Header("Sprites")]
     public Sprite[] characterStateList = new Sprite[9];
-
-    public enum CharacterState {Idle, Attack, Hit, Death, Victory};
-
+    public enum CharacterState { Idle, Attack, Hit, Death, Victory };
     public CharacterState currentState = CharacterState.Idle;
 
-    /*
-    Character sprite list
-    0: Idle1
-    1: Idle2
-    2: Attack1
-    3: Attack2
-    4: Attack3
-    5: Hit1
-    6: Death1
-    7: Victory1
-    8: Victory2
-    */
-
-    [Header("Time between 2 sprites")]
+    [Header("Settings")]
     public float interval = 0.5f;
     
     private Image uiImage;
+    private Coroutine activeRoutine;
+
+    void Awake()
+    {
+        uiImage = GetComponent<Image>();
+    }
 
     void Start()
     {
-        uiImage = GetComponent<Image>();
-        ControlCharacter();
+        SetState(CharacterState.Idle);
     }
 
-    // Call when state change
-    public void ControlCharacter()
+    public void SetState(CharacterState newState)
     {
-        switch(currentState)
+        if (activeRoutine != null) 
+            StopCoroutine(activeRoutine);
+
+        currentState = newState;
+
+        switch (currentState)
         {
             case CharacterState.Idle:
-                StartCoroutine(SwitchSprites(characterStateList[0..2]));
+                activeRoutine = StartCoroutine(SwitchSprites(characterStateList[0..2]));
                 break;
             case CharacterState.Attack:
-                StartCoroutine(SwitchSprites(characterStateList[2..5]));
+                activeRoutine = StartCoroutine(SwitchSprites(characterStateList[2..5]));
                 break;
             case CharacterState.Hit:
                 uiImage.sprite = characterStateList[5];
@@ -55,22 +47,19 @@ public class SpriteSwitcher : MonoBehaviour
                 uiImage.sprite = characterStateList[6];
                 break;
             case CharacterState.Victory:
-                StartCoroutine(SwitchSprites(characterStateList[7..9]));
-                break;
-            default:
-                uiImage.sprite = characterStateList[0];
+                activeRoutine = StartCoroutine(SwitchSprites(characterStateList[7..9]));
                 break;
         }
     }
 
     IEnumerator SwitchSprites(Sprite[] sprites)
     {
+        int i = 0;
         while (true)
         {
-            foreach(Sprite sprite in sprites) {
-                uiImage.sprite = sprite;
-                yield return new WaitForSeconds(interval);
-            }
+            uiImage.sprite = sprites[i];
+            i = (i + 1) % sprites.Length;
+            yield return new WaitForSeconds(interval);
         }
     }
 }
