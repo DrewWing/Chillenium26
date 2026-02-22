@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class QuickTime : MonoBehaviour
 {
-    public enum Directions { None, Up, Down, Left, Right };
+    public enum Directions { None, Left, Down, Up, Right }; // arranged in order.
 
     public Image[] arrowImages;
     public Sprite[] idleSprites;
@@ -85,13 +85,13 @@ public class QuickTime : MonoBehaviour
             activeDirections.Clear();
             int count = Random.Range(1, 3);
 
-            List<int> pool = new List<int> { 0, 1, 2, 3 };
+            List<int> pool = new List<int> { 0, 1, 2, 3 }; // Left, down, up, right
             for (int i = 0; i < count; i++)
             {
-                int randomIndex = Random.Range(0, pool.Count);
+                int randomIndex = Random.Range(0, pool.Count); // Inlcusive range
                 int arrowIdx = pool[randomIndex];
 
-                activeDirections.Add((Directions)(arrowIdx + 1));
+                activeDirections.Add((Directions)(arrowIdx + 1)); // +1 bc Directions starts with None
                 arrowImages[arrowIdx].sprite = flashSprites[arrowIdx];
 
                 pool.RemoveAt(randomIndex);
