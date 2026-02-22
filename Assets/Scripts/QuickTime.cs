@@ -20,6 +20,8 @@ public class QuickTime : MonoBehaviour
     [SerializeField] BossFight bossFight;
     [SerializeField] Level1Manager level1Manager;
 
+    [SerializeField] TimerDisplay timerDisplay;
+
     void Start()
     {
         foreach (Image img in arrowImages)
@@ -35,8 +37,10 @@ public class QuickTime : MonoBehaviour
 
     public void StartQuickTime()
     {
+        timerDisplay.timerIsRunning = true;
         quickTimeScore = 0;
         level1Manager.bettingPanel.SetActive(false);
+        level1Manager.backgroundImage.sprite = level1Manager.backgroundsList[1];
         foreach (Image img in arrowImages)
         {
             img.gameObject.SetActive(true);

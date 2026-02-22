@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Collections;
+using TMPro;
 
 public class BossFight : MonoBehaviour
 {
@@ -12,12 +13,14 @@ public class BossFight : MonoBehaviour
     public SpriteSwitcher enemySwitcher;
 
     [SerializeField] private SoundManager soundManager;
-    [SerializeField] public Level1Manager level1Manager;
+    [SerializeField] Level1Manager level1Manager;
 
     public Image playerImage;
     public Image enemyImage;
 
     public Button nextRoundButton;
+
+    public TextMeshProUGUI outcomeText;
 
     void Start()
     {
@@ -35,7 +38,7 @@ public class BossFight : MonoBehaviour
     {
         playerImage.gameObject.SetActive(true);
         enemyImage.gameObject.SetActive(true);
-
+        level1Manager.backgroundImage.sprite = level1Manager.backgroundsList[2];
         int baseAmount = level1Manager.bettedHealthPoints;
         int tier = level1Manager.quickTimeTier;
 
@@ -53,7 +56,7 @@ public class BossFight : MonoBehaviour
                 enemy.health = Math.Max(0, enemy.health - healthChanger);
                 playerSwitcher.SetState(SpriteSwitcher.CharacterState.Attack);
                 enemySwitcher.SetState(SpriteSwitcher.CharacterState.Hit);
-                Debug.Log(tier == 2 ? "PERFECT hit! " + healthChanger + " damage!" : "Good hit! " + healthChanger + " damage!");
+                outcomeText.text = tier == 2 ? "PERFECT hit! " + healthChanger + " damage!" : "Good hit! " + healthChanger + " damage!";
             }
             else
             {
@@ -61,7 +64,7 @@ public class BossFight : MonoBehaviour
                 player.health = Math.Max(0, player.health - baseAmount);
                 playerSwitcher.SetState(SpriteSwitcher.CharacterState.Hit);
                 enemySwitcher.SetState(SpriteSwitcher.CharacterState.Attack);
-                Debug.Log("Failed QTE! Took " + baseAmount + " damage.");
+                outcomeText.text = "Failed QTE! Took " + baseAmount + " damage.";
             }
         }
         else if (level1Manager.currentActionState == Level1Manager.ActionState.Heal)
@@ -105,12 +108,14 @@ public class BossFight : MonoBehaviour
     {
         if (player.health <= 0)
         {
+            level1Manager.backgroundImage.sprite = level1Manager.backgroundsList[4];
             playerSwitcher.SetState(SpriteSwitcher.CharacterState.Death);
             Debug.Log("Enemy wins...");
             soundManager.playLoss();
         }
         else if (enemy.health <= 0)
         {
+            level1Manager.backgroundImage.sprite = level1Manager.backgroundsList[3];
             enemySwitcher.SetState(SpriteSwitcher.CharacterState.Death);
             Debug.Log("You WINNNN");
             soundManager.playVictory();

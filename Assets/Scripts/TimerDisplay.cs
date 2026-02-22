@@ -4,9 +4,9 @@ using System.Collections;
 
 public class TimerDisplay : MonoBehaviour
 {
-    public TextMeshProUGUI timerText; 
-    public float timeRemaining = 30f;
-    [SerializeField] public bool timerIsRunning = false;
+    public TextMeshProUGUI timerText;
+    public float timeRemaining = 10f;
+    public bool timerIsRunning = false;
 
     void Update()
     {

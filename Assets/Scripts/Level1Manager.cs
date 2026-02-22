@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using TMPro;
 
 public class Level1Manager : MonoBehaviour
@@ -28,6 +29,11 @@ public class Level1Manager : MonoBehaviour
     public HealthBar playerHealthBar;
     public HealthBar enemyHealthBar;
     
+    public Image backgroundImage;
+
+    public Sprite[] backgroundsList;
+
+    public Button playButton;
     [SerializeField] private SoundManager soundManager;
 
     [SerializeField] private QuickTime quickTime;
@@ -43,6 +49,7 @@ public class Level1Manager : MonoBehaviour
 
         choicePanel.SetActive(false);
         bettingPanel.SetActive(false);
+        backgroundImage.sprite = backgroundsList[0];
     }
 
     void Update()
@@ -66,6 +73,11 @@ public class Level1Manager : MonoBehaviour
                 if (bettedHealthPoints == 0)
                 {
                     bettingPanel.SetActive(true);
+                    playButton.gameObject.SetActive(false);
+                }
+                else
+                {
+                    playButton.gameObject.SetActive(true);
                 }
                 break;
             default:
