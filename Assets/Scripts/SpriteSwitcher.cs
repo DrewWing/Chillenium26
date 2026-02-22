@@ -28,9 +28,9 @@ public class SpriteSwitcher : MonoBehaviour
     }
     public void LoadRound(int roundIndex)
     {
-        if (roundSpriteSets != null || roundSpriteSets.Length != 0)
+        if (roundSpriteSets != null && roundSpriteSets.Length != 0)
         {
-            int clampedIndex = roundIndex % 3;
+            int clampedIndex = roundIndex % roundSpriteSets.Length;
             characterStateList = roundSpriteSets[clampedIndex].sprites;
         }
         SetState(CharacterState.Idle);
